@@ -7,9 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -22,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Integer> userSequence = new ArrayList<>();
     private int currentStep = 0;
     private int score = 0;
-    private int round = 1; // Track the current round
+    private int round = 1;
     private boolean isUserTurn = false;
 
     private final Handler handler = new Handler();
@@ -33,20 +31,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Initialize buttons
         blueButton = findViewById(R.id.blueButton);
         greenButton = findViewById(R.id.greenButton);
         redButton = findViewById(R.id.redButton);
         yellowButton = findViewById(R.id.yellowButton);
         playButton = findViewById(R.id.playButton);
 
-        // Initialize score board
         scoreBoard = findViewById(R.id.scoreBoard);
 
-        // Set button listeners
         setButtonListeners();
 
-        // Set play button listener
+
         playButton.setOnClickListener(v -> startNewGame());
     }
 
@@ -59,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
             if (colorId == sequence.get(userSequence.size() - 1)) {
                 if (userSequence.size() == sequence.size()) {
-                    score += sequence.size();  // Increase score based on sequence length
+                    score += sequence.size();
                     updateScoreBoard();
                     Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show();
                     handler.postDelayed(this::nextRound, 1000);
@@ -81,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         userSequence.clear();
         currentStep = 0;
         score = 0;
-        round = 1;  // Reset round to 1
+        round = 1;
         updateScoreBoard();
         isUserTurn = false;
         nextRound();
@@ -90,15 +85,15 @@ public class MainActivity extends AppCompatActivity {
     private void nextRound() {
         userSequence.clear();
 
-        // Calculate sequence length for this round
-        int nextSequenceLength = 4 + (round - 1); // Starts at 4 and increases by 1 each round
 
-        // Add steps to the sequence based on the calculated length
+        int nextSequenceLength = 4 + (round - 1);
+
+
         for (int i = 0; i < nextSequenceLength; i++) {
-            sequence.add(random.nextInt(4));  // Randomly add a color to the sequence
+            sequence.add(random.nextInt(4));
         }
 
-        round++;  // Increment the round number
+        round++;
         playSequence();
     }
 

@@ -29,22 +29,18 @@ public class HighScoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.highscore);
 
-        // Initialize views
         highScoreList = findViewById(R.id.highScoreList);
         playerNameInput = findViewById(R.id.playerNameInput);
         Button saveScoreButton = findViewById(R.id.saveScoreButton);
         Button backButton = findViewById(R.id.backButton);
 
-        // Load leaderboard from SharedPreferences
         loadLeaderboard();
 
-        // Get the score from the intent
         int score = getIntent().getIntExtra("SCORE", 0);
 
-        // Debugging: Log the received score
+
         Log.d("HighScoreActivity", "Received score: " + score);
 
-        // Save score button logic
         saveScoreButton.setOnClickListener(v -> {
             String playerName = playerNameInput.getText().toString().trim();
             if (playerName.isEmpty()) {
@@ -52,28 +48,26 @@ public class HighScoreActivity extends AppCompatActivity {
             } else {
                 saveScore(playerName, score);
                 updateHighScoreList();
-                playerNameInput.setText(""); // Clear the input field
+                playerNameInput.setText("");
                 Toast.makeText(this, "Score saved!", Toast.LENGTH_SHORT).show();
             }
         });
 
-        // Back button logic
         backButton.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
         });
 
-        // Update the leaderboard display
         updateHighScoreList();
     }
 
     private void saveScore(String name, int score) {
-        Log.d("HighScoreActivity", "Saving score: " + score); // Debugging: Log the score being saved
+        Log.d("HighScoreActivity", "Saving score: " + score);
         leaderboard.add(new ScoreEntry(name, score));
-        Collections.sort(leaderboard, (a, b) -> b.score - a.score); // Sort by score descending
-        if (leaderboard.size() > 10) {
-            leaderboard.remove(leaderboard.size() - 1); // Keep only top 10
+        Collections.sort(leaderboard, (a, b) -> b.score - a.score);
+        if (leaderboard.size() > 5) {
+            leaderboard.remove(leaderboard.size() - 1);
         }
         saveLeaderboard();
     }
@@ -82,7 +76,7 @@ public class HighScoreActivity extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         String serializedScores = prefs.getString(SCORES_KEY, "");
 
-        // Debugging: Log the serialized scores loaded from SharedPreferences
+
         Log.d("HighScoreActivity", "Loaded serialized scores: " + serializedScores);
 
         if (!serializedScores.isEmpty()) {
@@ -109,7 +103,7 @@ public class HighScoreActivity extends AppCompatActivity {
         editor.putString(SCORES_KEY, serializedScores.toString());
         editor.apply();
 
-        // Debugging: Log the serialized scores being saved
+
         Log.d("HighScoreActivity", "Saving serialized scores: " + serializedScores.toString());
     }
 

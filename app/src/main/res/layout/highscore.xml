@@ -6,7 +6,6 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Placeholder for high scores -->
     <TextView
         android:id="@+id/highScoreTitle"
         android:layout_width="wrap_content"
@@ -24,7 +23,6 @@
         android:text="1. Player1: 10\n2. Player2: 8\n3. Player3: 6"
         android:textSize="18sp" />
 
-    <!-- Input for player name -->
     <EditText
         android:id="@+id/playerNameInput"
         android:layout_width="match_parent"
@@ -33,7 +31,6 @@
         android:hint="Enter your name"
         android:textSize="18sp" />
 
-    <!-- Horizontal LinearLayout to contain buttons side by side -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,7 +38,7 @@
         android:gravity="center"
         android:layout_marginBottom="16dp">
 
-        <!-- Save Score Button -->
+
         <Button
             android:id="@+id/saveScoreButton"
             android:layout_width="wrap_content"
@@ -50,7 +47,7 @@
             android:textSize="18sp"
             android:layout_marginEnd="16dp" />
 
-        <!-- Back Button -->
+
         <Button
             android:id="@+id/backButton"
             android:layout_width="wrap_content"
