@@ -1,0 +1,79 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#A09296"
+    android:padding="16dp">
+
+    <!-- Scoreboard at the top-left -->
+    <TextView
+        android:id="@+id/scoreBoard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="16dp"
+        android:text="Score: 0"
+        android:textSize="20sp" />
+
+    <!-- Play button at the bottom-right -->
+    <Button
+        android:id="@+id/playButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:text="Play" />
+
+    <!-- Circular button layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true">
+
+        <!-- Blue Button -->
+        <Button
+            android:id="@+id/blueButton"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="100dp"
+            android:backgroundTint="#0000FF"
+            android:text="Blue" />
+
+        <!-- Green Button -->
+        <Button
+            android:id="@+id/greenButton"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="50dp"
+            android:layout_toEndOf="@id/blueButton"
+            android:backgroundTint="#00FF00"
+            android:text="Green" />
+
+        <!-- Red Button -->
+        <Button
+            android:id="@+id/redButton"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="50dp"
+            android:layout_toStartOf="@id/blueButton"
+            android:backgroundTint="#FF0000"
+            android:text="Red" />
+
+        <!-- Yellow Button -->
+        <Button
+            android:id="@+id/yellowButton"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:backgroundTint="#FFFF00"
+            android:text="Yellow" />
+
+    </RelativeLayout>
+</RelativeLayout>
