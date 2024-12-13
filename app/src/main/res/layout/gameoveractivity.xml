@@ -1,27 +1,34 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="#ABA3A6"
     android:gravity="center"
-    android:padding="16dp"
-    android:background="#FFFFFF">
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <!-- Display the player's score -->
     <TextView
         android:id="@+id/finalScoreText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
         android:text="Your Score: 0"
         android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="32dp" />
+        android:textStyle="bold" />
 
-    <!-- Retry button to go back to main screen -->
+    <!-- Retry button -->
     <Button
         android:id="@+id/retryButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:text="Retry"
         android:textSize="18sp" />
 
+    <!-- High Score button -->
+    <Button
+        android:id="@+id/highScoreButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View High Scores"
+        android:textSize="18sp" />
 </LinearLayout>

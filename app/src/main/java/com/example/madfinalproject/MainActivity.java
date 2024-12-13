@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Integer> userSequence = new ArrayList<>();
     private int currentStep = 0;
     private int score = 0;
+    private int round = 1; // Track the current round
     private boolean isUserTurn = false;
 
     private final Handler handler = new Handler();
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
             if (colorId == sequence.get(userSequence.size() - 1)) {
                 if (userSequence.size() == sequence.size()) {
-                    score++;
+                    score += sequence.size();  // Increase score based on sequence length
                     updateScoreBoard();
                     Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show();
                     handler.postDelayed(this::nextRound, 1000);
@@ -80,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         userSequence.clear();
         currentStep = 0;
         score = 0;
+        round = 1;  // Reset round to 1
         updateScoreBoard();
         isUserTurn = false;
         nextRound();
@@ -87,7 +89,16 @@ public class MainActivity extends AppCompatActivity {
 
     private void nextRound() {
         userSequence.clear();
-        sequence.add(random.nextInt(4));
+
+        // Calculate sequence length for this round
+        int nextSequenceLength = 4 + (round - 1); // Starts at 4 and increases by 1 each round
+
+        // Add steps to the sequence based on the calculated length
+        for (int i = 0; i < nextSequenceLength; i++) {
+            sequence.add(random.nextInt(4));  // Randomly add a color to the sequence
+        }
+
+        round++;  // Increment the round number
         playSequence();
     }
 
